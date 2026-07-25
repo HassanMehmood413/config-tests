@@ -67,4 +67,4 @@ metadata:
   namespace: task-api
 type: Opaque
 stringData:
-  DATABASE_URL: postgresql+asyncpg://neondb_owner:npg_QOteF2Dow1JS@ep-red-wave-awkxiegk-pooler.c-12.us-east-1.aws.neon.tech/neondb?ssl=require
+  DATABASE_URL: postgresql+asyncpg:/*****
