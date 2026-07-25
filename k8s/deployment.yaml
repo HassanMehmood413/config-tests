@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: task-api
-        image: ghcr.io/hassanmehmood413/task-api:266c9d2
+        image: ghcr.io/hassanmehmood413/task-api:7be3119
         resources:
           requests:
             memory: "128Mi"
