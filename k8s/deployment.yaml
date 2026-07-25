@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: task-api
-        image: ghcr.io/hassanmehmood413/task-api:b68a8ae
+        image: ghcr.io/hassanmehmood413/task-api:1167f36
         envFrom: 
           - secretRef:
               name: task-api-secrets
