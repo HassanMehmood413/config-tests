@@ -11,7 +11,7 @@ metadata:
   name: task-api
   namespace: monitoring
   labels: 
-    release: prometheus
+    release: kube-prometheus-stack
 spec:
   selector:
     matchLabels:
@@ -22,4 +22,4 @@ spec:
   endpoints:
     - port: http
       path: /metrics
-      intervals: 5s
+      interval: 15s

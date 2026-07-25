@@ -11,10 +11,17 @@ spec:
     metadata:
       labels:
         app: task-api
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
     spec:
       containers:
       - name: task-api
         image: ghcr.io/hassanmehmood413/task-api:latest
+        envFrom: 
+          - secretRef:
+              name: task-api-secrets
         resources:
           requests:
             memory: "128Mi"
@@ -45,9 +52,19 @@ metadata:
     app: task-api-service
 spec:
   selector:
-    app: task-api-service
+    app: task-api
   ports:
     - name: http
       port: 8000
-      targetPort: 80
+      targetPort: 8000
 
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: task-api-secrets
+  namespace: task-api
+type: Opaque
+stringData:
+  DATABASE_URL: postgresql+asyncpg://neondb_owner:npg_QOteF2Dow1JS@ep-red-wave-awkxiegk-pooler.c-12.us-east-1.aws.neon.tech/neondb?ssl=require
