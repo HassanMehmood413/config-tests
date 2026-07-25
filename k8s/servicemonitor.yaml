@@ -1,0 +1,25 @@
+kind: Namespace 
+apiVersion: v1
+metadata:
+  name: monitoring
+
+---
+
+kind: ServiceMonitor
+apiVersion: monitoring.coreos.com/v1
+metadata: 
+  name: task-api
+  namespace: monitoring
+  labels: 
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: task-api-service
+  namespaceSelector:  
+    matchNames:
+      - task-api
+  endpoints:
+    - port: http
+      path: /metrics
+      intervals: 5s
